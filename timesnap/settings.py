@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'pages',
     'reserve',
     'rest_framework',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +128,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# 登入與登出導向
+LOGIN_REDIRECT_URL = '/profile/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'  # 登出後重新導向登入頁

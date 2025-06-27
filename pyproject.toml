@@ -6,10 +6,7 @@ readme = "README.md"
 requires-python = ">=3.13.2"
 dependencies = [
     "django>=5.2.3",
-<<<<<<< HEAD
     "django-environ>=0.12.0",
     "psycopg[binary]>=3.2.9",
-=======
     "djangorestframework>=3.16.0",
->>>>>>> 6a14e73 (feat: reserve function)
 ]
