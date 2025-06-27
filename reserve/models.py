@@ -1,6 +1,32 @@
 from django.db import models
+import uuid
+
+from datetime import time
+
 
 # Create your models here.
 
-class Resereve(Models.Model):
-    id = UUid
+class Reserve(models.Model):
+  id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+  name = models.CharField(max_length=100)
+  telephone = models.CharField(max_length=20) 
+  reserve_date = models.DateField()
+  reserve_time = models.TimeField(default=time(8, 0))
+  is_active = models.BooleanField(default=True)  # 控制開關
+
+  def __str__(self):
+    return f"{self.name} - {self.reserve_date} {self.reserve_time}"
+  
+
+  # 可預約時段（由管理端設定）
+class AvailableSlot(models.Model):
+    date = models.DateField()
+    time = models.TimeField()
+    is_available = models.BooleanField(default=True)
+
+    class Meta:
+        unique_together = ('date', 'time')  # 同一時間只能有一筆
+        ordering = ['date', 'time']
+
+    def __str__(self):
+        return f"{self.date} {self.time} - {'可預約' if self.is_available else '已關閉'}"
