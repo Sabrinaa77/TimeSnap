@@ -9,6 +9,7 @@ class ReserveForm(ModelForm):
             'telephone',
             'reserve_date',
             'reserve_time',
+            'is_active',
         ]
         labels = {
             'name': '姓名',
