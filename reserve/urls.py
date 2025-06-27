@@ -5,6 +5,7 @@ from reserve.views import calendar_page
 
 app_name = 'reserve'
 
+
 urlpatterns = [
     path('', views.home, name='home'),
     path('new/', views.new, name='new'),
