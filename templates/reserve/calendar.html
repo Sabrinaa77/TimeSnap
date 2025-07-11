@@ -7,10 +7,11 @@
   </div>
 </div>
 
-<!-- FullCalendar 樣式與功能 -->
+<!-- ✅ FullCalendar 樣式與功能 -->
 <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 
+<!-- ✅ FullCalendar 初始化與事件來源 -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
@@ -23,11 +24,9 @@
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay'
       },
-      events: [
-        { title: 'Alice 預約', start: '2025-06-28T14:00:00' },
-        { title: 'Bob 預約', start: '2025-06-29T09:30:00' },
-        { title: 'Carol 預約', start: '2025-07-02T10:00:00' }
-      ],
+      // ✅ 正確的事件來源：你新增的 reserve_events API
+      events: '/reserve/api/events/',
+
       eventColor: '#378006',
       eventClick: function(info) {
         alert('預約者：' + info.event.title + '\n時間：' + info.event.start.toLocaleString());

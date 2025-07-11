@@ -1,7 +1,6 @@
 from . import views
 from django.urls import path
-from .views import ReserveListAPIView
-from reserve.views import calendar_page
+from .views import ReserveListAPIView, calendar_page
 
 app_name = 'reserve'
 
@@ -13,5 +12,6 @@ urlpatterns = [
     path('edit/<uuid:id>/', views.edit, name='edit'),
     path('api/reserve/', ReserveListAPIView.as_view(), name='reservae-list'),
     path('calendar/', calendar_page, name='calendar-page'),
+    path('api/events/', views.reserve_events, name='reserve-events'),
 ]
 
