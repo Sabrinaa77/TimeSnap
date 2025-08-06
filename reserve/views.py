@@ -7,6 +7,8 @@ import datetime
 from rest_framework import serializers
 from .models import Reserve
 from django.http import JsonResponse
+from .models import AvailableSlot, Reserve
+
 
 # 首頁（可顯示所有預約）
 def home(request):
@@ -111,3 +113,11 @@ def reserve_events(request):
         for r in Reserve.objects.all()
     ]
     return JsonResponse(data, safe=False)
+
+
+def calendar_page(request):
+    # 找出所有尚未被預約且不是休假的時段
+    reserved_slot_ids = Reserve.objects.values_list('slot__id', flat=True)
+    slots = AvailableSlot.objects.exclude(id__in=reserved_slot_ids).filter(is_holiday=False).order_by('date', 'time')
+
+    return render(request, 'reserve/calendar.html', {'slots': slots})

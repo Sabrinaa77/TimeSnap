@@ -1,17 +1,46 @@
 {% extends 'layouts/customer/default.html' %}
 
 {% block main %}
+<style>
+  /* 調整行事曆寬度與置中 */
+  #calendar {
+    max-width: 900px;  /* 你想要的最大寬度 */
+    margin: 0 auto;    /* 置中 */
+  }
+</style>
+
 <div class="pt-20 px-4">
-  <div class="max-w-3xl mx-auto">
+  <div class="max-w-7xl mx-auto">
     <div id="calendar"></div>
+  </div>
+
+  <div class="max-w-3xl mx-auto mt-8">
+    <h2 class="text-xl font-bold mb-4 text-gray-800">📅 可預約時段</h2>
+
+    {% if slots %}
+      <ul class="space-y-2">
+        {% for slot in slots %}
+          <li class="bg-white shadow p-4 rounded flex justify-between items-center">
+            <span>{{ slot.date }} {{ slot.time|time:"H:i" }}</span>
+            <a href="{% url 'reserve:new' %}?slot_id={{ slot.id }}" class="text-white bg-pink-500 px-4 py-1 rounded hover:bg-pink-600">
+              預約
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="text-gray-500">目前沒有可預約的時段。</p>
+    {% endif %}
   </div>
 </div>
 
-<!-- ✅ FullCalendar 樣式與功能 -->
+
+
+<!-- FullCalendar CSS -->
 <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
+<!-- FullCalendar JS -->
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 
-<!-- ✅ FullCalendar 初始化與事件來源 -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
@@ -24,12 +53,11 @@
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay'
       },
-      // ✅ 正確的事件來源：你新增的 reserve_events API
       events: '/reserve/api/events/',
 
       eventColor: '#378006',
       eventClick: function(info) {
-        alert('預約者：' + info.event.title + '\n時間：' + info.event.start.toLocaleString());
+        alert('❌ 此時間已被預約，無法再次預約');
       }
     });
 
