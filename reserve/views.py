@@ -8,6 +8,8 @@ from rest_framework import serializers
 from .models import Reserve
 from django.http import JsonResponse
 from .models import AvailableSlot, Reserve
+from .models import Reserve
+from django.utils import timezone
 
 
 # 首頁（可顯示所有預約）
@@ -16,7 +18,7 @@ def home(request):
         form = ReserveForm(request.POST)
         if form.is_valid():
             reserve = form.save()
-            return redirect('reserve:show', id=reserve.id)  # ✅ 加上 id
+            return redirect('reserve:show', id=reserve.id)
     else:
         reserve = Reserve.objects.all()
     return render(request, 'reserve/home.html', {'reserve': reserve})
@@ -100,10 +102,6 @@ def create_reservation(request):
     else:
         form = ReserveForm()
     return render(request, 'reserve/form.html', {'form': form})
-
-
-
-
 def reserve_events(request):
     data = [
         {
