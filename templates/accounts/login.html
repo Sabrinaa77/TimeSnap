@@ -1,0 +1,15 @@
+<!-- accounts/templates/accounts/login.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>登入</title>
+</head>
+<body>
+  <h2>會員登入</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">登入</button>
+  </form>
+</body>
+</html>
