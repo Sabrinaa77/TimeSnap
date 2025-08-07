@@ -85,6 +85,16 @@ WSGI_APPLICATION = 'timesnap.wsgi.application'
 DATABASES = {
     # 自動解析 DATABASE_URL
     'default': env.db()
+=======
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "timesnap",   # database 的名稱設為 my_database
+        "USER": "postgres",      # PostgreSQL 的 user 名稱設為 postgres
+        "PASSWORD": "postgres",  # PostgreSQL 的 password 設為 postgres
+        "HOST": "localhost",
+        "PORT": "5432",
+    }
+>>>>>>> 28309e5 (fix: enviroment setting)
 }
 
 
