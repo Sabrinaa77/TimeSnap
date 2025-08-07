@@ -130,11 +130,5 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # 登入與登出導向
-<<<<<<< HEAD
 LOGIN_REDIRECT_URL = '/profile/'
 LOGOUT_REDIRECT_URL = '/accounts/login/'  # 登出後重新導向登入頁
-=======
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/accounts/login/'  # 登出後重新導向登入頁
-
->>>>>>> a5da5f1 (feat: add login and logout link to navigation menu)

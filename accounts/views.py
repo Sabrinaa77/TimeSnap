@@ -8,19 +8,22 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 
-# 個人資料
-@login_required
-def profile(request):
-    return render(request, 'accounts/profile.html')
+from django.shortcuts import render, redirect
+from .forms import RegisterForm
 
-# 註冊
-def signup(request):
+# 個人資料
+# @login_required
+def profile(request):
+    user = request.user  # 取得目前登入的使用者
+    return render(request, 'accounts/profile.html', {'user': user})
+
+def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            login(request, user)  # 註冊成功後自動登入
-            return redirect('profile')  # 註冊成功後導向個人頁面
+            user = form.save()  # 儲存使用者到資料庫
+            login(request,user) # 註冊成功後自動登入
+            return redirect('/accounts/profile/')  # 註冊完成後導向個人頁面
     else:
         form = UserCreationForm()
-    return render(request, 'accounts/signup.html', {'form': form})
+    return render(request, 'accounts/register.html', {'form': form})
