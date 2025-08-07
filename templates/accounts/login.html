@@ -6,11 +6,11 @@
 </head>
 <body>
   <h2>會員登入</h2>
-  <form method="post">
+  <form method="post" action="/accounts/logout/?next=/">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">登入</button>
-    <a href="/accounts/signup/" class="btn btn-primary">註冊帳號</a>
+    <a href="/accounts/register/" class="btn btn-primary">註冊帳號</a>
   </form>
 </body>
 </html>

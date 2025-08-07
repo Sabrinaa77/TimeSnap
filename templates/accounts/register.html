@@ -5,7 +5,7 @@
   </head>
   <body>
     <h2>建立新帳號</h2>
-    <form method="post">
+    <form method="post" action="/accounts/profile/">
       {% csrf_token %} {{ form.as_p }}
       <button type="submit">註冊</button>
     </form>
