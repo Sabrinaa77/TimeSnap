@@ -20,13 +20,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # env init
 env = environ.Env()
 # 預設會讀取專案根目錄的 `.env`
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+environ.Env.read_env()
+# environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+# SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = 'plg+)*)(_ke59@%dt47$=@_$ta*shu+#r!@#_3pxx1m!u%)kcu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG', default=False)
@@ -83,9 +85,6 @@ WSGI_APPLICATION = 'timesnap.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    # 自動解析 DATABASE_URL
-    'default': env.db()
-=======
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "timesnap",   # database 的名稱設為 my_database
@@ -94,7 +93,6 @@ DATABASES = {
         "HOST": "localhost",
         "PORT": "5432",
     }
->>>>>>> 28309e5 (fix: enviroment setting)
 }
 
 

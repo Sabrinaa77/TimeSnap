@@ -2,6 +2,7 @@ from django.db import models
 import uuid
 
 from datetime import time
+from datetime import date
 
 
 # Create your models here.
@@ -34,14 +35,10 @@ class AvailableSlot(models.Model):
 
 class Reserve(models.Model):
     slot = models.ForeignKey(AvailableSlot, on_delete=models.CASCADE, null=True, blank=True)
-<<<<<<< HEAD
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=True)
-=======
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
->>>>>>> 7a3423c (feat: add .evn、ignore files)
     name = models.CharField(max_length=100)
     telephone = models.CharField(max_length=20)
-    reserve_date = models.DateField(default=date(2025, 7, 1))  # 修正這裡
+    reserve_date = models.DateField(default=date(2025, 7, 1))
     reserve_time = models.TimeField(default=time(8, 0))
     is_active = models.BooleanField(default=True)  # 控制開關
 
