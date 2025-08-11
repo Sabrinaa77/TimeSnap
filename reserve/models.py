@@ -34,7 +34,11 @@ class AvailableSlot(models.Model):
 
 class Reserve(models.Model):
     slot = models.ForeignKey(AvailableSlot, on_delete=models.CASCADE, null=True, blank=True)
+<<<<<<< HEAD
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=True)
+=======
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+>>>>>>> 7a3423c (feat: add .evn、ignore files)
     name = models.CharField(max_length=100)
     telephone = models.CharField(max_length=20)
     reserve_date = models.DateField(default=date(2025, 7, 1))  # 修正這裡
