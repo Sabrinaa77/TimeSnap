@@ -11,20 +11,18 @@
       </div>
       <ul3 tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
         {% if user.is_authenticated %}
-        <li>
-          <a class="justify-between" href="#">
-            Hi, {{ user.username }}
-            <span class="badge">Logged In</span>
-          </a>
-        </li>
-        <li><a href="{% url 'profile' %}">My Profile</a></li>
-        <li><a href="{% url 'logout' %}">Logout</a></li>
+          <li>
+            <a class="justify-between" href="#">
+              Hi, {{ user.username }}
+              <span class="badge">Logged In</span>
+            </a>
+          </li>
+          <li><a href="{% url 'profile' %}">My Profile</a></li>
+          <li><a href="{% url 'logout' %}">Logout</a></li>
         {% else %}
-        <li><span>Design</span></li>
-        <li><a href="{% url 'login' %}">Login</a></li>
+          <li><span>Design</span></li>
+          <li><a href="/accounts/login/">Login</a></li>
         {% endif %}
-
-
         </ul>
     </div>
   </div>

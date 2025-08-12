@@ -1,18 +1,14 @@
-<!-- accounts/templates/accounts/profile.html -->
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>會員中心</title>
-  </head>
-  <body>
-    <h2>歡迎，{{ user.username }}</h2>
-    <p>這是一個登入後才能看的頁面。</p>
-    <h2>會員資料</h2>
+{% extends 'layouts/customer/default.html' %}
+{% block main %}
+<div class="max-w-3xl mx-auto text-center py-12 px-4 pt-20"></div>
+  <h1>會員中心</h1>
+  <h2>歡迎，{{ user.username }}</h2>
+  <p>這是一個登入後才能看的頁面。</p>
+  <h2>會員資料</h2>
 
-    <p>用戶名稱：{{ user.username }}</p>
-    <p>電子郵件：{{ user.email }}</p>
-    <p>姓氏：{{ user.last_name }}</p>
-    <p>名字：{{ user.first_name }}</p>
-    <a href="/accounts/logout/?next=/">登出</a>
-  </body>
-</html>
+  <p>用戶名稱：{{ user.username }}</p>
+  <p>電子郵件：{{ user.email }}</p>
+  <p>姓氏：{{ user.last_name }}</p>
+  <p>名字：{{ user.first_name }}</p>
+  <a href="/accounts/logout/?next=/">登出</a>
+{% endblock %}

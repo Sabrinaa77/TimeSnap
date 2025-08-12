@@ -32,6 +32,7 @@ SECRET_KEY = 'plg+)*)(_ke59@%dt47$=@_$ta*shu+#r!@#_3pxx1m!u%)kcu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG', default=False)
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
@@ -139,4 +140,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # 登入與登出導向
 LOGIN_REDIRECT_URL = '/profile/'
-LOGOUT_REDIRECT_URL = '/accounts/login/'  # 登出後重新導向登入頁
+LOGOUT_REDIRECT_URL = '/login/'  # 登出後重新導向登入頁
