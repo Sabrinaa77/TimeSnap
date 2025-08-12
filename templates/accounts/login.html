@@ -1,16 +1,21 @@
-<!-- accounts/templates/accounts/login.html -->
-<!DOCTYPE html>
-<html>
-<head>
-  <title>登入</title>
-</head>
-<body>
-  <h2>會員登入</h2>
-  <form method="post" action="/accounts/logout/?next=/">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">登入</button>
-    <a href="/accounts/register/" class="btn btn-primary">註冊帳號</a>
-  </form>
-</body>
-</html>
+{% extends 'layouts/customer/default.html' %}
+
+{% block main %}
+<div class="max-w-3xl mx-auto text-center py-12 px-4 pt-20"></div>
+<h2>會員登入</h2>
+<form method="post" action="">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">登入</button>
+</form>
+
+{% if messages %}
+<ul>
+  {% for message in messages %}
+  <li style="color: red;">{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+<a href="/accounts/register/" class="btn btn-primary">註冊帳號</a>
+{% endblock %}
